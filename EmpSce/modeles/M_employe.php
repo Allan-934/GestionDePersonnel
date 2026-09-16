@@ -13,21 +13,39 @@ class M_employe extends M_generique
         // {
         //     mysqli_close($this->cnx);
         // }
-        public function GetListe()
+
+
+        // public function GetListe()
+        // {
+        //     $resultat=array();
+        //     $this->connexion();
+        //     $req="select * from employe";
+        //     $res=mysqli_query($this->GetCnx(),$req); 
+        //     $ligne=mysqli_fetch_assoc($res);
+        //     while ($ligne)
+        //     {
+        //         $employe=new Employe(    $ligne["emp_matricule"],$ligne["emp_nom"],
+        //                                                  $ligne["emp_prenom"],$ligne["emp_service"]);
+        //         $resultat[]=$employe;
+        //         $ligne=mysqli_fetch_assoc($res);
+        //     }
+        //     $this->deconnexion();
+        //     return $resultat;
+        // }
+
+        public function GetListe() // Modification page 8 si il y a un fichier lesEmployes.txt
         {
             $resultat=array();
-            $this->connexion();
-            $req="select * from employe";
-            $res=mysqli_query($this->GetCnx(),$req); 
-            $ligne=mysqli_fetch_assoc($res);
-            while ($ligne)
+            $fichier = fopen(__DIR__ . '/lesEmployes.txt', 'r');
+            while ($ligne = fgets($fichier))
             {
-                $employe=new Employe(    $ligne["emp_matricule"],$ligne["emp_nom"],
-                                                         $ligne["emp_prenom"],$ligne["emp_service"]);
+                $elements=explode("#",$ligne);
+                $employe=new Employe($elements[0],$elements[1],$elements[2],$elements[3]);
                 $resultat[]=$employe;
-                $ligne=mysqli_fetch_assoc($res);
             }
-            $this->deconnexion();
+            fclose($fichier);
             return $resultat;
         }
+
+
 }

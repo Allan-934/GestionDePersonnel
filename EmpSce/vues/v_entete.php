@@ -7,16 +7,3 @@
     <meta http-equiv="Content-Language" content="fr" />
 </head>
 <body>
-
-<?php
-    include_once 'v_entete.php';
-    foreach ($this->data['lesEmployes'] as $unEmploye)
-    {
-            echo $unEmploye->GetMatricule().", ";
-            echo $unEmploye->GetNom().", ";
-            echo $unEmploye->GetPrenom().", ";
-            echo $unEmploye->GetService()."<br />";
-    }
-    include_once 'v_piedPage.php';
-?> 
-

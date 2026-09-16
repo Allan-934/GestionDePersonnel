@@ -12,6 +12,6 @@ class C_consulterEmployes
         public function action_afficher()
         {
             $this->data['lesEmployes']=$this->modele_employe->GetListe();
-            require_once "vues/v_ listeEmployes.php";
+            require_once "vues/v_listeEmployes.php";
         }
 }
