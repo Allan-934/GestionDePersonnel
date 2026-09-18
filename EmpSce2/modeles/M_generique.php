@@ -11,7 +11,7 @@ class M_generique
             mysqli_set_charset($this->cnx, "utf8");
         }
         public function Deconnexion() {
-            mysqli_close($this->cnx);
+            mysqli_close($this->cnx);     
         }
 }
 
